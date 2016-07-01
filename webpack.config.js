@@ -1,9 +1,8 @@
 module.exports ={
 
-    entry:"./app.js",
+    entry:["./src/vendor/vendor.js","./src/app.js"],
     output:{
-        filename:"bundle.js"
+        filename:"dist/bundle.js"
     },
     watch:true
-
 };
