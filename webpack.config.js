@@ -4,5 +4,18 @@ module.exports ={
     output:{
         filename:"dist/bundle.js"
     },
-    watch:true
+    watch:true,
+    module:{
+        loaders:[
+            {
+                test:/\.es6$/,
+                exclude:/node_modules/,
+                loader:"babel-loader"
+            }
+        ]
+    },
+
+    resolve:{
+        extensions:['','.js','.jsx','.es6']
+    }
 };
