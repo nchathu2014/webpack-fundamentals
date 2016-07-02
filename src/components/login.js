@@ -11,6 +11,12 @@ let loginStatus = (username,password)=>{
 };
 
 
+//commonJS module export
+/*
 module.exports={
     login:loginStatus('admin','123')
-}
+}*/
+
+//es6 module export
+
+export{loginStatus};
