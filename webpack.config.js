@@ -1,10 +1,13 @@
-module.exports ={
+var path = require('path');
 
-    entry:["./src/vendor/vendor.js","./src/app.js"],
+module.exports ={
+    context:path.resolve("src"), //create relative root directory fot the 'entry'
+    entry:["./vendor/vendor.js","./app.js"],
     output:{
-        filename:"dist/bundle.js"
+        path:"dist/scripts",
+        publicPath:"scripts",  //tel the web server to lookup the bundle.js(index.html path to bundle)
+        filename:"bundle.js"
     },
-    watch:true,
     module:{
 
         preLoaders:[
@@ -23,7 +26,12 @@ module.exports ={
         ]
     },
 
+    devServer:{
+      contentBase:"dist"
+    },
+
     resolve:{
         extensions:['','.js','.jsx','.es6']
-    }
+    },
+    watch:true
 };
