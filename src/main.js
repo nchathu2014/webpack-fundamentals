@@ -2,6 +2,16 @@
  * Created by UCHATNU on 7/3/2016.
  */
 
+import React from 'react';
+import ReactDOM from 'react-dom';
+import App from './components/App'
+
+ReactDOM.render(
+    <App/>,
+    document.getElementById('react-div')
+);
+
+
 let img = document.createElement('img');
 img.src=require("./img/capture.png");
 document.getElementById('img-container').appendChild(img);
@@ -44,3 +54,4 @@ function loadingApp(){
 }
 
 loadingApp();
+
