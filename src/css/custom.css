@@ -1,5 +1,15 @@
+@font-face {
+    font-family: "Lora";
+
+    src: url("../assets/fonts/Lora-Bold.ttf");
+    src: url("../assets/fonts/Lora-BoldItalic.ttf");
+    src: url("../assets/fonts/Lora-Italic.ttf");
+    src: url("../assets/fonts/Lora-Regular.ttf");
+}
+
 body{
     background-color: #4cae4c;
+    font-family:
 
 }
 
