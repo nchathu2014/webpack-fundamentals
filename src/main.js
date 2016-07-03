@@ -4,6 +4,7 @@
 
 require('./css/bootstrap.min.css');
 require('./css/custom.css');
+require('./scss/common.scss');
 
 function loadingApp(){
     let domElement = document.getElementById('app');
