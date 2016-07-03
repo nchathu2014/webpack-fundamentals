@@ -1,12 +1,18 @@
 var path = require('path');
+var webpack = require('webpack');
+var commonsPlugin = new webpack.optimize.CommonsChunkPlugin('shared.js');
 
 module.exports ={
     context:path.resolve("src"), //create relative root directory fot the 'entry'
-    entry:["./vendor/vendor.js","./app.js"],
+    entry:{
+        home:"./home.js",
+        about:"./about.js",
+        contact:"./contact.js"
+    },
     output:{
-        path:"dist/scripts",
+        path:"dist",
         publicPath:"scripts",  //tel the web server to lookup the bundle.js(index.html path to bundle)
-        filename:"bundle.js"
+        filename:"[name].js"
     },
     module:{
 
@@ -25,6 +31,7 @@ module.exports ={
             }
         ]
     },
+    plugins:[commonsPlugin],
 
     devServer:{
       contentBase:"dist"
