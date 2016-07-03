@@ -1,18 +1,14 @@
 var path = require('path');
-var webpack = require('webpack');
-var commonsPlugin = new webpack.optimize.CommonsChunkPlugin('shared.js');
 
 module.exports ={
     context:path.resolve("src"), //create relative root directory fot the 'entry'
     entry:{
-        home:"./home.js",
-        about:"./about.js",
-        contact:"./contact.js"
+        main:"./main.js"
     },
     output:{
         path:"dist",
         publicPath:"scripts",  //tel the web server to lookup the bundle.js(index.html path to bundle)
-        filename:"[name].js"
+        filename:"[name]-bundle.js"
     },
     module:{
 
@@ -28,10 +24,18 @@ module.exports ={
                 test:/\.js$/,
                 exclude:/node_modules/,
                 loader:"babel-loader"
-            }
+            },
+            {
+                test:/\.css$/,
+                exclude:/node_modules/,
+                loader:"style-loader!css-loader"
+            },
+            { test: /\.eot(\?v=\d+\.\d+\.\d+)?$/, loader: "file" },
+            { test: /\.(woff|woff2)$/, loader:"url?prefix=font/&limit=5000" },
+            { test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/, loader: "url?limit=10000&mimetype=application/octet-stream" },
+            { test: /\.svg(\?v=\d+\.\d+\.\d+)?$/, loader: "url?limit=10000&mimetype=image/svg+xml" },
         ]
     },
-    plugins:[commonsPlugin],
 
     devServer:{
       contentBase:"dist"
