@@ -2,10 +2,10 @@
  * Created by UCHATNU on 7/3/2016.
  */
 
-require('!style!css!./css/bootstrap.min.css');
-require('!style!css!sass!./scss/common.scss');
-require('!style!css!less!./less/main.less');
-require('!style!css!./css/custom.css');
+require('./css/bootstrap.min.css');
+require('./scss/common.scss');
+require('./less/main.less');
+require('./css/custom.css');
 
 function loadingApp(){
     let domElement = document.getElementById('app');
