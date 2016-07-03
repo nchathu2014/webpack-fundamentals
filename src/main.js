@@ -5,6 +5,7 @@
 require('./css/bootstrap.min.css');
 require('./css/custom.css');
 require('./scss/common.scss');
+require('./less/main.less');
 
 function loadingApp(){
     let domElement = document.getElementById('app');
