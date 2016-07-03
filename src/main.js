@@ -11,6 +11,9 @@ require('./scss/common.scss');
 require('./less/main.less');
 require('./css/custom.css');
 
+
+$('#messageDiv').html("<h3>Hello From jQuery</h3>");
+
 function loadingApp(){
 
     let domElement = document.getElementById('app');

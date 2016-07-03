@@ -1,4 +1,7 @@
 var path = require('path');
+var webpack = require("webpack");
+var TimestampWebpackPlugin = require("timestamp-webpack-plugin");
+
 
 module.exports ={
     context:path.resolve("src"), //create relative root directory fot the 'entry'
@@ -10,6 +13,20 @@ module.exports ={
         publicPath:"scripts",  //tel the web server to lookup the bundle.js(index.html path to bundle)
         filename:"[name]-bundle.js"
     },
+    plugins:[
+        new webpack.ProvidePlugin({  //global the jQuery object everywhere along the project
+            $:"jquery",
+            jQuery:"jquery",
+            "window.jQuery":"jquery"
+        }),
+
+        new TimestampWebpackPlugin({
+            path:__dirname,
+            filename:"timestamp.json"
+        }),
+
+        new webpack.BannerPlugin("####################################\n Author:T.D.Nuwan Chathuranga\n####################################")
+    ],
     module:{
 
         preLoaders:[
