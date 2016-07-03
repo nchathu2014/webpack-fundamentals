@@ -1,4 +1,5 @@
 var path = require('path');
+var ExtractPlugin = require("extract-text-webpack-plugin");
 
 module.exports ={
     context:path.resolve("src"), //create relative root directory fot the 'entry'
@@ -10,6 +11,9 @@ module.exports ={
         publicPath:"scripts",  //tel the web server to lookup the bundle.js(index.html path to bundle)
         filename:"[name]-bundle.js"
     },
+    plugins:[
+        new ExtractPlugin("main.css")
+    ],
     module:{
 
         preLoaders:[
@@ -20,30 +24,14 @@ module.exports ={
             }
         ],
         loaders:[
-            {
-                test:/\.js$/,
-                exclude:/node_modules/,
-                loader:"babel-loader"
-            },
-            {
-                test:/\.css$/,
-                exclude:/node_modules/,
-                loader:"style-loader!css-loader"
-            },
-            {
-                test:/\.scss$/,
-                exclude:/node_modules/,
-                loader:"style-loader!css-loader!sass-loader"
-            },
-            {
-                test:/\.less$/,
-                exclude:/node_modules/,
-                loader:"style-loader!css-loader!less-loader"
-            },
-            { test: /\.eot(\?v=\d+\.\d+\.\d+)?$/, loader: "file" },
-            { test: /\.(woff|woff2)$/, loader:"url?prefix=font/&limit=5000" },
-            { test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/, loader: "url?limit=10000&mimetype=application/octet-stream" },
-            { test: /\.svg(\?v=\d+\.\d+\.\d+)?$/, loader: "url?limit=10000&mimetype=image/svg+xml" },
+            {test:/\.js$/,exclude:/node_modules/,loader:"babel-loader"},
+            {test:/\.css$/,exclude:/node_modules/,loader:ExtractPlugin.extract("style-loader","css-loader")},
+            {test:/\.scss$/,exclude:/node_modules/,loader:ExtractPlugin.extract("style-loader","css-loader","sass-loader")},
+            {test:/\.less$/,exclude:/node_modules/,loader:ExtractPlugin.extract("style-loader","css-loader","less-loader")},
+            {test: /\.eot(\?v=\d+\.\d+\.\d+)?$/, loader: "file" },
+            {test: /\.(woff|woff2)$/, loader:"url?prefix=font/&limit=5000" },
+            {test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/, loader: "url?limit=10000&mimetype=application/octet-stream" },
+            {test: /\.svg(\?v=\d+\.\d+\.\d+)?$/, loader: "url?limit=10000&mimetype=image/svg+xml" },
         ]
     },
 
